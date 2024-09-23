@@ -5,7 +5,7 @@ import pickle
 from time import sleep
 
 
-HOST = '192.168.43.127'
+HOST = ''
 # PORT FOR RAT CONTROLLER CONNECTION
 PORT = 8010
 

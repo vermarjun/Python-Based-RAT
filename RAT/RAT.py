@@ -21,10 +21,11 @@ server.bind((HOST,PORT))
 server.listen()
 
 def database_entry():
-    scope = []
-    credentials_json = {
-        # Google spreadsheet API creds
-    }
+    # Uncomment this
+    # scope = []
+    # credentials_json = {
+    #     # Google spreadsheet API creds
+    # }
     try:
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_json, scope)
         # Authenticate with Google Sheets API

@@ -23,24 +23,14 @@ server.listen()
 def database_entry():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     credentials_json = {
-    "type": "service_account",
-    "project_id": "ratdb-417917",
-    "private_key_id": "f0b0fd3312b52754055608080c68ca3644fdd389",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDU4T0B9SJm0JTx\np2lJkZVhWlfE/C3QJLHa4QPftUdLAQR/ie0AzO7s/ygYejNzqNs6/DkF7ULcD9c0\nifvFU529jwNNnZenu1bmJ90h9qWK0I3PtkTppiaD7TZdgbD1V8QKDyjvaFc4JEoe\nWDbDAK7DznEqsfAlwUFU/Sc6vAjt9tIVEsiRkuF3DFckc2KjOY95oKyADmWKNXJv\nOwkAF4AltaAKRu+5IstesWeW1KWz1vPJxUlaulKZkCjxksDZX3tN+PDSB3gRvsrl\nJLBB/AhbO02UuaywvTHsNzWGA6/Xie9yerE7rVvHsVuEAknh4DcjgJ7veV6tRg2E\n4NNqz6jXAgMBAAECggEABHiEPbhiMd/ZN983xScRIkyk2y0N2NtSS/h1NUULIORK\nvuz1MJLQb8EG4NgwbXAbxgkfjmQkZOQFNXMHvipFOZPB9JGBndMD9dMfgBTvbjmH\nyOiqJixQ0tN4kEDm2yLhOwMebWZU0HbLcbLVtfzoYedbhJv+7ehS8wdrw/5RB7FD\nUoZyVw+VNKRfthi+79n83s4O1/jUVtWtFgr87QgQvP1pYV6WY3nW01hfyOe63AMj\nYyhL5JkJgFcSMSdRemDB8Cdd7CnU5b+kgpt1V0067dOtcCjyoIFV5uk5U5+gEAqU\n/1kIIvH36mI4n6CM0xt2GUmktEcfykpgGWlIxEz0UQKBgQD7kjaoc3LDFvxTPBz0\n9TNT1pQNZigFINg2OoPZuK+G3shRe97pVvAvXBMRetKYf3m9Wtb4jdARlZ83LGkL\n7WTNLLqSDqlO8Z77DfrHNgnH+m2ApTb23K1SU17XXukpOD6ajyzdM5KvBbe3ewBN\noKfQRkJwAzSpiVOKzwxVPcaWsQKBgQDYoKZij4LaINoqWKHGl8/My+a/6vjAQzHc\n70s+ejp0GWK537L+5qJ/qs2eDo7FY7T8ExHuTcF4oGNraFeiyay9AFVp1J5GXi2D\n3rvCmjIngYUCAYYfZYZYj5C4kDA9kApX3uchPkcqmYnt/bEPlOJlTIeJKimzWI27\nrwHMs1CqBwKBgEyMs0ES0Cr5BZK2SgFn01SBiM+C9E6LLf9iUtifUBn0FHRnAu9x\n2uguVkcNXqO0tnCeAafkTxnqs2Xwh45vkCq2n5buCyrQbxXprRONJ/DIDSYGH/GC\nOONCJyvV35EBYltZkcdFeC71yG92aCM27Zl8p565+v5ToS4tzozpnVIhAoGBALI7\nU0oqa23Os9E9hTUhOM52QQ9MY4fEgWUW2SC5bhiRvmHSBLKmzbIetPhDYAJV69Wu\nVwVroi/+Pm5jth7wsZf7i0r8rZCV8fraqj8NoRBSBz5ERLbWUDfTPy4rLBWqymfL\ntPzsAZ+yHgLaxPBd/ft8gNNBBnhR9qMh9WgXbNnHAoGAHdUEQiwTybKPaSJfwVoN\njTGL/WSbMAMUswhvTJwRK3Ch+iIh80r3JJa8/dkvURqEjO0qTAxlKh9ZcVm5jwfq\nXKzhqafNJWSqlTIu6SUj9T8xfdxSMTDfagqF3vCc/2wro/gXUY9tEBB1zsV9l1he\nQEOu7m3qeNhsZeRAh98EJno=\n-----END PRIVATE KEY-----\n",
-    "client_email": "medusaratdb@ratdb-417917.iam.gserviceaccount.com",
-    "client_id": "111491971753306192051",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/medusaratdb%40ratdb-417917.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
+        # Google spreadsheet API creds
     }
     try:
         credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_json, scope)
         # Authenticate with Google Sheets API
         gc = gspread.authorize(credentials)
         # Open the spreadsheet (by title or URL)
-        spreadsheet_url = 'https://docs.google.com/spreadsheets/d/18VtJFRIdnrS13vTYKehZRncohnjbPXhJAwIprYfSKeU/edit?usp=sharing'
+        spreadsheet_url = 'https://docs.google.com/spreadsheets/d/18VtJFRIdnrS13vTYKehZRncohnjbPXhJAwIprYfSKeU/edit?usp=sharing' #YEAH IT IS MY GOOGLE SHEET, I DONT THINK YOU CAN DO ANYTHING ABOUT IT
         spreadsheet = gc.open_by_url(spreadsheet_url)
         # Select the worksheet you want to read from
         worksheet = spreadsheet.sheet1 

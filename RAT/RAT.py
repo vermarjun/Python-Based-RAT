@@ -21,7 +21,7 @@ server.bind((HOST,PORT))
 server.listen()
 
 def database_entry():
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+    scope = []
     credentials_json = {
         # Google spreadsheet API creds
     }

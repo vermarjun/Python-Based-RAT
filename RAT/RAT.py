@@ -30,7 +30,7 @@ def database_entry():
         # Authenticate with Google Sheets API
         gc = gspread.authorize(credentials)
         # Open the spreadsheet (by title or URL)
-        spreadsheet_url = 'https://docs.google.com/spreadsheets/d/18VtJFRIdnrS13vTYKehZRncohnjbPXhJAwIprYfSKeU/edit?usp=sharing' #YEAH IT IS MY GOOGLE SHEET, I DONT THINK YOU CAN DO ANYTHING ABOUT IT
+        spreadsheet_url = ""  #YEAH IT IS MY GOOGLE SHEET, I DONT THINK YOU CAN DO ANYTHING ABOUT IT
         spreadsheet = gc.open_by_url(spreadsheet_url)
         # Select the worksheet you want to read from
         worksheet = spreadsheet.sheet1 
